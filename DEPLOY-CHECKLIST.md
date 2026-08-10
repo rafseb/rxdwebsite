@@ -1,6 +1,6 @@
 # Deployment Checklist
 
-Site is ready to push and enable on GitHub Pages, with 1 signup-required placeholder remaining.
+Site is ready to launch — all external placeholders configured.
 
 ## ✅ Completed
 
@@ -12,7 +12,7 @@ Site is ready to push and enable on GitHub Pages, with 1 signup-required placeho
 - [x] Testimonials → Removed (add back when you have real quotes with permission)
 - [x] KvK & BTW → Already present (KVK 99369494, BTW NL005382072B24)
 
-## ⏳ Remaining (1 external signup)
+## ⏳ Remaining
 
 ### 1. ✅ Contact form — Web3Forms access key
 
@@ -20,23 +20,9 @@ Site is ready to push and enable on GitHub Pages, with 1 signup-required placeho
 
 ---
 
-### 1. Cloudflare Web Analytics token
+### 1. ✅ Cloudflare Web Analytics token
 
-**Where:** Line 464 of `index.html`
-
-```html
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-        data-cf-beacon='{"token": "CLOUDFLARE_ANALYTICS_TOKEN", "spa": true}'></script>
-```
-
-**Get it:**
-1. Log in to Cloudflare dashboard
-2. Analytics → Web Analytics → "Add a site"
-3. Enter site name (e.g. "RXD Cloud Consulting")
-4. Copy the token from the JS snippet they show
-5. Replace `CLOUDFLARE_ANALYTICS_TOKEN` in line 464
-
-**Without this:** The analytics script loads but doesn't send data. The site works fine; you just have no visit stats.
+**Status:** Configured (2026-08-10).
 
 ---
 
@@ -112,4 +98,4 @@ grep -rn "SITE_URL\|WEB3FORMS_ACCESS_KEY\|CAL_BOOKING_URL\|CLOUDFLARE_ANALYTICS_
   --include="*.html" --include="*.js" --include="*.txt" --include="*.xml" .
 ```
 
-Expected output: only `WEB3FORMS_ACCESS_KEY` (line 393) and `CLOUDFLARE_ANALYTICS_TOKEN` (line 464).
+Expected output: no matches (all placeholders configured).
