@@ -1,6 +1,6 @@
 # Deployment Checklist
 
-Site is ready to push and enable on GitHub Pages, with 2 signup-required placeholders remaining.
+Site is ready to push and enable on GitHub Pages, with 1 signup-required placeholder remaining.
 
 ## ✅ Completed
 
@@ -12,27 +12,15 @@ Site is ready to push and enable on GitHub Pages, with 2 signup-required placeho
 - [x] Testimonials → Removed (add back when you have real quotes with permission)
 - [x] KvK & BTW → Already present (KVK 99369494, BTW NL005382072B24)
 
-## ⏳ Remaining (2 external signups)
+## ⏳ Remaining (1 external signup)
 
-### 1. Contact form — Web3Forms access key
+### 1. ✅ Contact form — Web3Forms access key
 
-**Where:** Line 393 of `index.html`
-
-```html
-<input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY">
-```
-
-**Get it:**
-1. Go to [web3forms.com](https://web3forms.com)
-2. Enter `rscloudsolutions@gmail.com` (the email already wired in the form)
-3. Access key arrives instantly at that email
-4. Replace `WEB3FORMS_ACCESS_KEY` in line 393 with the key
-
-**Without this:** The contact form shows but submissions fail silently.
+**Status:** Configured (2026-08-10).
 
 ---
 
-### 2. Cloudflare Web Analytics token
+### 1. Cloudflare Web Analytics token
 
 **Where:** Line 464 of `index.html`
 
