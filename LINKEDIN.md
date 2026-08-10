@@ -17,7 +17,7 @@ Replace `SITE_URL` throughout with the live domain once it's chosen.
 | **Industry** | IT Services and IT Consulting |
 | **Company size** | 1 employee |
 | **Company type** | Self-employed |
-| **Headquarters** | Hooglanderveen, Utrecht, Netherlands |
+| **Headquarters** | The Netherlands (remote-first) |
 | **Founded** | *(year of KVK registration — check your KVK extract)* |
 | **Phone** | *(optional — leave blank if you'd rather route everything through email)* |
 
