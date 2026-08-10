@@ -66,7 +66,7 @@ The repo is already on GitHub at `rafseb/rxdwebsite` (private). To go live:
 4. Site lives at `https://rafseb.github.io/rxdwebsite`
 
 ```bash
-cd "/Volumes/WD-4TB-RS/Claude Project/rxdwebsite"
+cd "/Users/raf/rxdwebsite"
 
 git add -A
 git commit -m "Ready for launch: site URL, Calendly booking, availability, LinkedIn URL
