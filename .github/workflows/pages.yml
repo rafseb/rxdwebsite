@@ -80,8 +80,14 @@ jobs:
             echo "$p -> $code"
             test "$code" = "200"
           done
-          for p in PROJECT.md DEPLOY-CHECKLIST.md README.md LINKEDIN.md; do
-            code=$(curl -s -o /dev/null -w "%{http_code}" "$BASE/$p")
+          # Pages can return 503 for a short time after a publish. Retry until 404 or timeout.
+          for p in PROJECT.md DEPLOY-CHECKLIST.md README.md LINKEDIN.md PRIVACY-RECORD.md; do
+            code=000
+            for attempt in 1 2 3 4 5 6 7 8 9 10; do
+              code=$(curl -s -o /dev/null -w "%{http_code}" "$BASE/$p")
+              [ "$code" = "404" ] && break
+              sleep 15
+            done
             echo "$p -> $code (must be 404)"
             test "$code" = "404"
           done
