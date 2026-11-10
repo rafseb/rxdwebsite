@@ -1,0 +1,97 @@
+# Build, check and deploy the site to GitHub Pages.
+#
+# Normal release:  push to main -> check -> deploy.
+# Roll back:       Actions -> "Deploy site" -> Run workflow -> ref = a commit SHA or tag
+#                  (for example a deploy tag such as deploy-2026-11-11-1). The old version
+#                  is checked, then redeployed. main stays unchanged.
+#
+# Only the files in the allowlist below are published. Internal documents never ship.
+
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Commit SHA or tag to deploy (empty = current main)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# One deployment at a time. Never cancel a running deploy half way.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Static checks
+        run: python3 scripts/check_site.py
+
+  deploy:
+    needs: check
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || github.sha }}
+          fetch-depth: 0
+
+      - name: Build publish folder (allowlist)
+        run: |
+          mkdir -p _site
+          cp index.html privacy.html styles.css main.js favicon.svg robots.txt sitemap.xml og-image.png _site/
+          cp -r fonts _site/fonts
+          ls -R _site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Smoke test live site
+        env:
+          BASE: https://rafseb.github.io/rxdwebsite
+        run: |
+          set -e
+          for p in "" privacy.html styles.css main.js fonts/space-grotesk.css; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --retry 5 --retry-delay 10 "$BASE/$p")
+            echo "$p -> $code"
+            test "$code" = "200"
+          done
+          for p in PROJECT.md DEPLOY-CHECKLIST.md README.md LINKEDIN.md; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "$BASE/$p")
+            echo "$p -> $code (must be 404)"
+            test "$code" = "404"
+          done
+
+      - name: Record deploy tag
+        if: github.event_name == 'push' || github.event.inputs.ref == ''
+        run: |
+          tag="deploy-$(date -u +%Y-%m-%d)-${GITHUB_RUN_NUMBER}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "$tag" "$GITHUB_SHA"
+          git push origin "$tag"
+          echo "Tagged $tag at $GITHUB_SHA. Roll back with ref=$tag."

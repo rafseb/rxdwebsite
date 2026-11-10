@@ -6,7 +6,7 @@
   <title>RXD Cloud Consulting — Workday Integration Specialist</title>
   <meta name="description" content="I help teams connect Workday to the rest of their stack — Studio, EIB, Core Connectors, automation and reporting. Workday Pro certified, 15+ years, working remotely worldwide from the Netherlands.">
   <meta name="author" content="Rafael Sebastian">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.web3forms.com; form-action https://api.web3forms.com; base-uri 'self'; frame-ancestors 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src https://api.web3forms.com https://cloudflareinsights.com; form-action https://api.web3forms.com; base-uri 'self'; object-src 'none'">
   <link rel="canonical" href="https://rafseb.github.io/rxdwebsite/">
 
   <meta property="og:site_name" content="RXD Cloud Consulting">
@@ -25,9 +25,7 @@
   <meta name="twitter:description" content="I build and fix Workday integrations — Studio, EIB, Core Connectors, automation — so HR data flows without someone pushing it along. 15+ years, Workday Pro certified.">
   <meta name="twitter:image" content="https://rafseb.github.io/rxdwebsite/og-image.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/space-grotesk.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
 
@@ -49,6 +47,9 @@
         "priceRange": "$$$",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "STREET_ADDRESS",
+          "postalCode": "POSTAL_CODE",
+          "addressLocality": "CITY",
           "addressCountry": "NL"
         },
         "areaServed": {
@@ -238,7 +239,7 @@
               <a href="https://calendly.com/raf-sebastian/30min" class="btn" data-goal="book-call" target="_blank" rel="noopener">Book a 30-min intro call</a>
               <a href="#contact" class="btn btn-ghost">Send a message</a>
             </div>
-            <p class="experience-strip">Delivered for: a Nordic manufacturer&ensp;·&ensp;an e-commerce scale-up&ensp;·&ensp;a global asset manager&ensp;·&ensp;a travel technology company&ensp;·&ensp;Accenture</p>
+            <p class="experience-strip">Recent clients: a Nordic manufacturer&ensp;·&ensp;a European e-commerce scale-up&ensp;·&ensp;a global asset manager&ensp;·&ensp;an Asia-Pacific travel platform</p>
           </div>
         </div>
       </div>
@@ -276,7 +277,7 @@
         <div class="grid grid-3">
           <article class="case">
             <p class="case-figure">~700</p>
-            <p class="case-client">an e-commerce scale-up — new hires per year, live on day one</p>
+            <p class="case-client">European e-commerce scale-up — new hires per year, live on day one</p>
             <dl>
               <dt>The problem</dt>
               <dd>High-volume hiring meant hundreds of new starters a year, and too many of them hit a login failure on their first morning. Every failure became a manual IT ticket on the day the person was least able to wait.</dd>
@@ -289,20 +290,20 @@
 
           <article class="case">
             <p class="case-figure">CSRD</p>
-            <p class="case-client">a Nordic manufacturer — audit-ready workforce reporting</p>
+            <p class="case-client">Nordic manufacturer — audit-ready workforce reporting</p>
             <dl>
               <dt>The problem</dt>
               <dd>New CSRD sustainability reporting obligations required workforce figures that were consistent, traceable and defensible to an auditor — not assembled by hand each cycle.</dd>
               <dt>What I did</dt>
               <dd>Built the Workday reporting and data-extraction tooling behind the workforce disclosures, with the calculation logic held in the tenant so the numbers could be reproduced on demand.</dd>
               <dt>What changed</dt>
-              <dd>Workforce data published in the a Nordic manufacturer Annual &amp; Sustainability Report 2025, and a repeatable process for every reporting cycle that follows.</dd>
+              <dd>Workforce data published in the client's annual sustainability report for 2025, and a repeatable process for every reporting cycle that follows.</dd>
             </dl>
           </article>
 
           <article class="case">
             <p class="case-figure">5–15 hrs</p>
-            <p class="case-client">a global asset manager — manual processing saved every week</p>
+            <p class="case-client">Global asset manager — manual processing saved every week</p>
             <dl>
               <dt>The problem</dt>
               <dd>HR and Finance were carrying recurring manual processing — rekeying, reconciling and chasing data between Workday and the systems around it, every single week.</dd>
@@ -333,7 +334,7 @@
                    alt="Rafael Sebastian, Workday integration consultant" loading="lazy" decoding="async">
             </picture>
             -->
-            <p>I'm Rafael Sebastian, a Workday integration specialist based in the Netherlands. Since 2009 I've worked across the full HR technology stack — starting in PeopleSoft and Oracle at Accenture, and specialising in Workday integrations for the past decade at companies including a travel technology company, a global asset manager, an e-commerce scale-up and a Nordic manufacturer.</p>
+            <p>I'm Rafael Sebastian, a Workday integration specialist based in the Netherlands. Since 2009 I've worked across the full HR technology stack — starting in PeopleSoft and Oracle at Accenture, and specialising in Workday integrations for the past decade at employers across e-commerce, asset management, travel technology and manufacturing.</p>
           </div>
           <p>I sit between HR, Payroll, IT and Finance — listening to all of them, then turning what they need into integrations that run without anyone holding them together. I work with teams globally, remotely, in English.</p>
           <p>Most of my work starts the same way — a process that someone is holding together by hand, and a system that was supposed to have removed that work. If that sounds familiar, it is worth a conversation.</p>
@@ -422,6 +423,12 @@
                         placeholder="e.g. We're moving payroll to CloudPay and need the Workday side built and tested before October."></textarea>
             </div>
 
+            <p class="form-note">
+              Your details are used only to reply to your enquiry and are not added to any mailing list.
+              The form is relayed by Web3Forms to my email inbox. Read how I handle your data in the
+              <a href="privacy.html#contact-form">privacy notice</a>.
+            </p>
+
             <button type="submit" class="btn">Send message</button>
             <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
           </form>
@@ -448,8 +455,9 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>RXD Cloud Consulting · The Netherlands</p>
-      <p>KVK 99369494 · BTW NL005382072B24</p>
+      <p>Rafael Sebastian, trading as RXD Cloud Consulting · STREET_ADDRESS · POSTAL_CODE CITY · The Netherlands</p>
+      <p>KVK 99369494 · BTW NL005382072B24 · <a href="mailto:rscloudsolutions@gmail.com">rscloudsolutions@gmail.com</a></p>
+      <p><a href="privacy.html">Privacy notice</a> · <a href="privacy.html#legal">Legal notice</a></p>
     </div>
   </footer>
 
